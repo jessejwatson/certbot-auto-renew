@@ -32,13 +32,19 @@ async function main() {
         const configPath = path.join(__dirname, "config.json");
         const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 
+	// Check if domains are configured
+	if (!config.domains || !Array.isArray(config.domains)) {
+	    throw new Error("No domains in configuration file");
+	}
+
         // Stop reverse proxy
         logMessage("Stopping reverse proxy...");
         await executeCommand("docker stop reverse-proxy");
         logMessage("Reverse proxy stopped successfully");
 
         // Process each domain
-        for (const entry of config) {
+	
+        for (const entry of config.domains) {
             const { url, docker_volume } = entry;
             const volumeName = docker_volume || "reverse-proxy-certs";
 

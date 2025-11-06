@@ -1,6 +1,0 @@
-[
-    {
-        "url": "something.mydomain.com",
-        "docker_volume": "reverse-proxy-certs"
-    }
-]
