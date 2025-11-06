@@ -1,0 +1,8 @@
+{
+  "domains": [
+    {
+      "url": "example.mydomain.com",
+      "docker_volume": "reverse-proxy-certs"
+    }
+  ]
+}
